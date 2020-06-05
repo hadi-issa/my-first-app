@@ -1,16 +1,31 @@
 <template>
   <v-container>
-    <v-btn dark x-large @click="spin=true" :loading="spin" block color="green">spin</v-btn>
-    <v-btn dark x-large @click="spin=false"  block color="orange">Stop spin</v-btn>
+    <v-img v-if="showImage" width="100" src="@/assets/images/image1.jpeg"></v-img>
+
+    <v-btn dark x-large @click="showHideImage" block :color="color1">{{name}}</v-btn>
   </v-container>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
-
+  methods: {
+    showHideImage() {
+      if (this.showImage == true) {
+        this.showImage = false;
+        this.name="Show Image"
+        this.color1="green"
+      } else {
+        this.showImage = true;
+        this.name="Hide Image"
+        this.color1="red"
+      }
+    }
+ },
   data: () => ({
-    spin: false
+    color1: "green",
+    showImage: false,
+    name: "Show Image"
   })
 };
 </script>
